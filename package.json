@@ -1,0 +1,17 @@
+{
+  "name": "com.skytoss.replacebyprefabtool",
+  "version": "1.0.0",
+  "displayName": "SkyToss Replace by Prefab",
+  "description": "Simple tool for replace hierarchy object by project prefab.",
+  "unity": "2020.3",
+  "keywords": [
+    "package",
+    "unity",
+    "skytosstools",
+    "replace"
+  ],
+  "author": {
+    "name": "SkyToss",
+    "email": "toss.szilagyi@gmail.com"
+  }
+}
