@@ -1,14 +1,16 @@
 {
-  "name": "com.skytoss.replacebyprefabtool",
-  "version": "1.0.0",
-  "displayName": "SkyToss Replace by Prefab",
+  "name": "com.unobex.replacebyprefab",
+  "version": "1.1.1",
+  "displayName": "Replace by Prefab",
   "description": "Simple tool for replace hierarchy object by project prefab.",
   "unity": "2020.3",
   "keywords": [
     "package",
     "unity",
-    "skytosstools",
-    "replace"
+    "unobex",
+    "skytoss",
+    "replace",
+    "prefabs"
   ],
   "author": {
     "name": "SkyToss",

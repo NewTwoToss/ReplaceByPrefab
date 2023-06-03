@@ -8,7 +8,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Plugins.SkyTossTools.ReplacePrefabTool.Editor.Scripts
+namespace Unobex.ReplacePrefab.Editor
 {
     internal struct ErrorData
     {
@@ -17,17 +17,11 @@ namespace Plugins.SkyTossTools.ReplacePrefabTool.Editor.Scripts
         public bool _isNullComponent02;
     }
 
-    public class ReplacePrefabTool : EditorWindow
+    public class ReplaceByPrefab : EditorWindow
     {
-#region [PRIVATE CONSTANTS]
-
-        private const string VERSION = "1.1";
-
-#endregion
+        const string TOOLTIP_MESSAGE = "Replace Hierarchy Component By Prefab From Project";
 
 #region [PRIVATE]
-
-        //private static string _pathTextures;
 
         private bool _initialized;
         private RectTransform _originalComponent;
@@ -63,23 +57,21 @@ namespace Plugins.SkyTossTools.ReplacePrefabTool.Editor.Scripts
 
         private void InitializeValues()
         {
-            // TODO: Dokoncit!
+            // TODO: Dokoncit123!
         }
 
-        [MenuItem("Tools/SkyToss Tools/Replace Component")]
-        private static void UnityMenuQuickAccessTool()
+        [MenuItem("Tools/Unobex/Replace by Prefab")]
+        private static void UnityMenuQuickAccess()
         {
-            //InitializeData();
             DrawMainWindow();
         }
 
         private static void DrawMainWindow()
         {
-            var mainWindow = (ReplacePrefabTool)GetWindow(typeof(ReplacePrefabTool));
-            mainWindow.titleContent.text = "Replace Component";
-            var tooltip = $"Replace Component Tool :: Created by SkyToss :: v{VERSION}";
-            mainWindow.titleContent.tooltip = tooltip;
-            mainWindow.minSize = new Vector2(280f, 500f);
+            var mainWindow = (ReplaceByPrefab)GetWindow(typeof(ReplaceByPrefab));
+            mainWindow.titleContent.text = "Replace by Prefab";
+            mainWindow.titleContent.tooltip = TOOLTIP_MESSAGE;
+            mainWindow.minSize = new Vector2(280f, 380f);
             mainWindow.Show();
         }
 
@@ -112,7 +104,10 @@ namespace Plugins.SkyTossTools.ReplacePrefabTool.Editor.Scripts
 
         private void DrawAdditionalSettings()
         {
+            // TODO: Spravit metodu na ToggleLeft GUI zafarbenie
+            GUI.color = _copyText ? Color.white : new Color(0.7f, 0.7f, 0.7f);
             _copyText = EditorGUILayout.ToggleLeft("Copy Text", _copyText);
+            GUI.color = _copyImage ? Color.white : new Color(0.7f, 0.7f, 0.7f);
             _copyImage = EditorGUILayout.ToggleLeft("Copy Image", _copyImage);
         }
 
@@ -128,9 +123,9 @@ namespace Plugins.SkyTossTools.ReplacePrefabTool.Editor.Scripts
                 }
                 else
                 {
-                    var instComponent = (RectTransform)PrefabUtility
-                        .InstantiatePrefab(_originalComponent, _hierarchyComponent.parent);
-
+                    var instComponent = (RectTransform)PrefabUtility.InstantiatePrefab(
+                        _originalComponent,
+                        _hierarchyComponent.parent);
                     if (_copyHierarchyComponentName)
                     {
                         instComponent.name = _hierarchyComponent.name;
@@ -261,9 +256,9 @@ namespace Plugins.SkyTossTools.ReplacePrefabTool.Editor.Scripts
             {
                 normal =
                 {
-                    textColor = new Color(1f, 0.86f, 0f)
+                    textColor = new Color(0.4f, 0.4f, 0.4f)
                 },
-                fontSize = 12,
+                fontSize = 14,
                 fontStyle = FontStyle.Bold,
                 margin = new RectOffset(6, 0, 0, 0),
                 alignment = TextAnchor.MiddleLeft
@@ -271,7 +266,7 @@ namespace Plugins.SkyTossTools.ReplacePrefabTool.Editor.Scripts
 
             _replaceButtonGUIContent = new GUIContent
             {
-                image = EditorGUIUtility.IconContent("P4_AddedRemote").image,
+                image = EditorGUIUtility.IconContent("d_PlayButton On").image,
                 text = "Replace"
             };
         }
