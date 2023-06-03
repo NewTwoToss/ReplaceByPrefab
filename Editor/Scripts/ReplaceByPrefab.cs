@@ -57,7 +57,7 @@ namespace Unobex.ReplacePrefab.Editor
 
         private void InitializeValues()
         {
-            // TODO: Dokoncit123!
+            // TODO: Dokoncit!
         }
 
         [MenuItem("Tools/Unobex/Replace by Prefab")]
